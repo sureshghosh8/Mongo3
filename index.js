@@ -69,6 +69,12 @@ app.post("/chats",(req,res)=>{
   })
   res.redirect("/chats");
 })
+//edit route
+app.get("/chats/:id/edit", async (req,res)=>{
+  let {id}=req.params;
+  let chat=  await chat.findById(id);
+  res.render("edit.ejs",{chat});
+});
 app.get("/",(req,res)=>{
   res.send("root is working");
 });
